@@ -301,7 +301,7 @@ function M.switch(direction, opts)
   end
 
   local offset = direction == 'next' and 1 or -1
-  local provider_id_sel = (current_provider_idx + offset) % #active_providers
+  local provider_id_sel = ((current_provider_idx + offset - 1) % #active_providers) + 1
   local provider = assert(active_providers[provider_id_sel])
   async.run(run_provider, provider, bufnr, opts)
 end
